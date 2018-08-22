@@ -58,7 +58,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
-\fancyhead[L]{Lecci\'{o}n 2}
+\fancyhead[L]{Lecci\'{o}n 3}
 %\fancyhead[L]{CNRS Competition 01-04}
 \fancyhead[R]{Jos\'{e} David Ruiz \'{A}lvarez}
 \fancyhead[C]{}
@@ -86,7 +86,7 @@
 %\begin{center}
 \noindent
 \begin{minipage}[b]{0.75\linewidth}
-{\LARGE\bf Lecci\'{o}n 2}\\ %[1mm]
+{\LARGE\bf Lecci\'{o}n 3}\\ %[1mm]
 %\end{center}
 %{\Large\bf \emph{}}\\ %[3mm]
 %{\Large\bf \emph{connections between LHC and neutrino experiments}}\\ %[3mm]
@@ -110,136 +110,89 @@
 
 %\doublespacing
 
+\section{Modelando un conjunto de datos}
 
-\section{Conceptos básicos de C++}
-
-\subsection{Operadores}
-Operadores binarios: Requieren dos variables, por ejemplo para realizar la operación suma $a+b$.
+Dado un conjunto de datos, estos pueden ser modelados matemáticamente tratando de ajustar el comportamiento de los datos a una función. El modelo debe:
 
 \begin{itemize}
-\item Suma: +
-\item Resta: -
-\item Multiplicación: $*$
-\item División: $/$
-\item Módulo: \% (Solo se puede usar sobre enteros)
+\item Ajustarse lo más posible a los datos (Calidad del ajuste).
+\item Tener en cuenta la incertidumbre de los datos.
 \end{itemize}
 
-%Operadores unitarios: Solo requieren de una variable, la operación se efectúa sobre la misma variable. Por ejemplo, $a =+ 10$.
+Si bien el modelo es una simple representación matemática de los datos en física damos un paso adicional en el cual este modelo matemático es derivado o esperado de una teoría física en particular dependiendo del fenómeno. En prime lugar vamos a aprender técnicamente cómo hacer un ``fit'' para luego entrar en los detalles de la incertidumbre asociada a los datos y la calidad del ajuste. 
 
-Operadores relacionales, ejemplo $i<=3$, estos operadores retornan un booleano $True$ o $False$ si la realción se cumple o no correspondientemente:
-\begin{itemize}
-\item Menor que: $<$
-\item Menor o igual que: $<=$
-\item Mayor que: $>$
-\item Mayor o igual que: $>=$
-\item Igual que: $==$
-\item No igual que: $!=$
-\end{itemize}
+En primer lugar vamos a generar datos aleatoriamente siguiendo una distribución gaussiana:
 
-Operadores lógicos, se usan para combinar operaciones relacionales:
-\begin{itemize}
-\item OR: $||$
-\item AND: $\&\&$
-\item Negación: $*$
-\end{itemize}
-
-Otros operadores:
-\begin{itemize}
-\item $A+=5\leftrightarrow A=A+5$
-\item $A-=5\leftrightarrow A=A-5$
-\item $A*=5\leftrightarrow A=A*5$
-\item $A/=5\leftrightarrow A=A/5$
-\item $A\% =5\leftrightarrow A=A\% 5$
-\item $A++\leftrightarrow A=A+1$
-\item $A--\leftrightarrow A=A-1$
-\end{itemize}
-
-\subsection{Tipos de variables}
-
-Esta es una de las diferencias fundamentales con Python en donde no se requiere declarar el tipo de una variable para asignarles un valor. En C++ es necesario declarar el tipo de una variable para asignarle un valor, sin embargo ambas acciones se pueden hacer en una sola línea. Los tipos de variables básicos (y más usados, pero hay más!) en C++ son:
-
-\begin{itemize}
-\item double: Número real de 15 dígitos + signo 
-\item float: Número real de 7 dígitos + signo
-\item int: Número entero de 10 dígitos + signo
-\item char: Un solo caracter.
-\item bool: Booleano ``True'' o ``False''
-\end{itemize}
-
-El manejo de strings en C++ es poco intuitivo. Si necesitan hacer un programa para hacer algún tipo de operaciones sobre strings es aconsejable usar python en lugar de C++.
-
-\subsection{Bucles y condicionales}
-
-Ejemplo de condicional simple:
 \begin{verbatim}
-int a = 12;
-if (a<=30){
-cout << a*5 << endl;
-}
+from numpy import sqrt, pi, exp, linspace, save
+def gaussian(x, amp, cen, wid):
+   return amp * exp(-(x-cen)**2 /wid)
+
+x = linspace(-10,10)
+y = gaussian(x, 2.33, 0.21, 1.51)
+
+save("x_coord",x)
+save("y_coord",y)
+
+import matplotlib.pyplot as plt
+plt.scatter(x, y)
+plt.show()
 \end{verbatim}
 
-Ejemplo de condicional y ``else'':
-\begin{verbatim}
-int a = 12;
-int b = 13;
-if (a<=30 && b>30){
-cout << "Both conditions satisfied" << endl;
-}
-else {
-cout << "No condition satisfied" << endl;
+Ahora vamos a abrir los datos que hemos guardado para hacer el ajuste:
 
-}
+\begin{verbatim}
+from numpy import sqrt, pi, exp, linspace, load
+def gaussian(x, amp, cen, wid):
+   return amp * exp(-(x-cen)**2 /wid)
+
+
+x=load("x_coord.npy")
+y=load("y_coord.npy")
+
+from scipy.optimize import curve_fit
+init_vals = [1, 0, 1]     # for [amp, cen, wid]
+best_vals, covar = curve_fit(gaussian, x, y, p0=init_vals)
+print best_vals
+
+import matplotlib.pyplot as plt
+plt.scatter(x, y)
+plt.plot(linspace(-10,10,100),gaussian(linspace(-10,10,100),best_vals[0],best_vals[1],best_vals[2]),"r-")
+plt.show()
 \end{verbatim}
 
-Ejemplo de condicionales anidados:
+{\textbf{Pregunta 1:}} ¿Qué tan bien se ajustan los parámetros de la función utilizada a los datos?
+
+{\textbf{Pregunta 2:}} ¿Qué pasa si cambiamos los valores iniciales que le damos al fit?
+
+{\textbf{Pregunta 3:}} ¿Qué pasa si cambiamos la función utilizada para el ajuste por un polinomio de tercer grado?
+
+{\textbf{Ejercicio 1:}} Reemplace la generación de los datos por lo siguiente:
+
 \begin{verbatim}
-float a = 12.53;
-if (a<=2){
-cout << "First condition satisfied" << endl;
-}
-else if (a<=6 && a>2){
-cout << "Second condition satisfied" << endl;
-}
-else if (a<=13 && a>6){
-cout << "Third condition satisfied" << endl;
-}
+from numpy import sqrt, pi, exp, linspace, save, random
+def gaussian(x, amp, cen, wid):
+   return amp * exp(-(x-cen)**2 /wid)
+
+x = linspace(-10,10)
+y = gaussian(x, 2.33, 0.21, 1.51) + random.normal(0, 0.2, len(x))
+
+save("x_coord_noisy",x)
+save("y_coord_noisy",y)
+
+import matplotlib.pyplot as plt
+plt.scatter(x, y)
+plt.show()
 \end{verbatim}
+y realice de nuevo el ajuste utilizando una función gaussiana. ¿Es igual de bueno el ajuste que en el caso inicial?
 
-Ejemplo de ``while'':
-\begin{verbatim}
-double b = 1.001;
-while (b<10000)
-{
-b*=1.001;
-cout << b << endl; 
-}
-\end{verbatim}
+{\textbf{Ejercicio 2:}} Descargue los siguientes datos \url{https://jruizalv.web.cern.ch/jruizalv/CUFICO_Data/Leccion3/x_spectra.npy} \url{https://jruizalv.web.cern.ch/jruizalv/CUFICO_Data/Leccion3/y_spectra.npy} y trate de encontrar una funcion con la cual modelarlos. Suba sus resultados en forma de ``pull request'' al repositorio central en la carpeta ``Ejercicio\_Leccion3''. 
 
-{\textbf{Ejercicio 1:}} Implemente el mismo ejemplo de while de C++ en python y compare el tiempo que toma hacer el cálculo en ambos lenguajes. Suba los resultados a github en forma de pull request en la carpeta ``Ejercicio1\_Leccion2''.  Recuerde poner su nombre en el nombre de los archivos.
+{\textbf{Nota:}} Si algunos de los paquetes necesarios para esta lección no se encuentra instalado, puede instalarlos siguiendo las instrucciones enÑ \url{https://www.scipy.org/install.html}.
 
-%Results on C++
-%real    0m0.202s
-%user    0m0.051s
-%sys     0m0.064s
-
-%Results on python
-%real    0m0.211s
-%user    0m0.057s
-%sys     0m0.084s
-
-Ejemplo de ``for'':
-\begin{verbatim}
-  double b = 1.001;
-  double c = 1.001;
-  for (int i=0; i<20; i++)
-    {
-      b*=(c+i);
-      cout << b << endl;
-    }
-\end{verbatim}
-
-{\textbf{Ejercicio 2:}} Haga un script de C++ que calcule los números de fibonacci y que imprima en pantalla únicamente los números pares de la serie. Guarde los resultados en un archivo de texto. Suba el script y los resultados a github en forma de pull request en la carpeta ``Ejercicio2\_Leccion2''. Recuerde poner su nombre en el nombre de los archivos.
-
+%\begin{verbatim}
+%
+%\end{verbatim}
 
 %\begin{center}
 %\includegraphics[width=0.4\linewidth]{DM_detection.jpg}

@@ -58,7 +58,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
-\fancyhead[L]{Lecci\'{o}n 2}
+\fancyhead[L]{Tarea 1}
 %\fancyhead[L]{CNRS Competition 01-04}
 \fancyhead[R]{Jos\'{e} David Ruiz \'{A}lvarez}
 \fancyhead[C]{}
@@ -86,7 +86,7 @@
 %\begin{center}
 \noindent
 \begin{minipage}[b]{0.75\linewidth}
-{\LARGE\bf Lecci\'{o}n 2}\\ %[1mm]
+{\LARGE\bf Tarea 1}\\ %[1mm]
 %\end{center}
 %{\Large\bf \emph{}}\\ %[3mm]
 %{\Large\bf \emph{connections between LHC and neutrino experiments}}\\ %[3mm]
@@ -110,136 +110,15 @@
 
 %\doublespacing
 
-
-\section{Conceptos básicos de C++}
-
-\subsection{Operadores}
-Operadores binarios: Requieren dos variables, por ejemplo para realizar la operación suma $a+b$.
+La primera tarea del curso consiste en instalar el paquete ROOT de acuerdo a las instrucciones que los desarrolladores proveen para tal efecto: \url{https://root.cern.ch/building-root}. Los entregables para la primera tarea son:
 
 \begin{itemize}
-\item Suma: +
-\item Resta: -
-\item Multiplicación: $*$
-\item División: $/$
-\item Módulo: \% (Solo se puede usar sobre enteros)
+\item Un archivo de texto explicando qué es y qué función cumplen dentro de la instalación el ``cmake'' y ``source''. La explicación no debe ser larga y puede realizarse en unas pocas líneas de texto.
+\item Prueba de que han instalado ROOT satisfactoriamente en su computador personal. Para esto sirve por ejemplo un ``pantallazo'' de la terminal mostrando las características de su computador y una sesión de ROOT iniciada.
+\item Los entregables deben ser subidos al repositorio central en forma de ``pull request'' en la carpeta Tarea1. Cada estudiante debe crear una carpeta con su nombre donde debe poner los entregables de la tarea.
 \end{itemize}
 
-%Operadores unitarios: Solo requieren de una variable, la operación se efectúa sobre la misma variable. Por ejemplo, $a =+ 10$.
-
-Operadores relacionales, ejemplo $i<=3$, estos operadores retornan un booleano $True$ o $False$ si la realción se cumple o no correspondientemente:
-\begin{itemize}
-\item Menor que: $<$
-\item Menor o igual que: $<=$
-\item Mayor que: $>$
-\item Mayor o igual que: $>=$
-\item Igual que: $==$
-\item No igual que: $!=$
-\end{itemize}
-
-Operadores lógicos, se usan para combinar operaciones relacionales:
-\begin{itemize}
-\item OR: $||$
-\item AND: $\&\&$
-\item Negación: $*$
-\end{itemize}
-
-Otros operadores:
-\begin{itemize}
-\item $A+=5\leftrightarrow A=A+5$
-\item $A-=5\leftrightarrow A=A-5$
-\item $A*=5\leftrightarrow A=A*5$
-\item $A/=5\leftrightarrow A=A/5$
-\item $A\% =5\leftrightarrow A=A\% 5$
-\item $A++\leftrightarrow A=A+1$
-\item $A--\leftrightarrow A=A-1$
-\end{itemize}
-
-\subsection{Tipos de variables}
-
-Esta es una de las diferencias fundamentales con Python en donde no se requiere declarar el tipo de una variable para asignarles un valor. En C++ es necesario declarar el tipo de una variable para asignarle un valor, sin embargo ambas acciones se pueden hacer en una sola línea. Los tipos de variables básicos (y más usados, pero hay más!) en C++ son:
-
-\begin{itemize}
-\item double: Número real de 15 dígitos + signo 
-\item float: Número real de 7 dígitos + signo
-\item int: Número entero de 10 dígitos + signo
-\item char: Un solo caracter.
-\item bool: Booleano ``True'' o ``False''
-\end{itemize}
-
-El manejo de strings en C++ es poco intuitivo. Si necesitan hacer un programa para hacer algún tipo de operaciones sobre strings es aconsejable usar python en lugar de C++.
-
-\subsection{Bucles y condicionales}
-
-Ejemplo de condicional simple:
-\begin{verbatim}
-int a = 12;
-if (a<=30){
-cout << a*5 << endl;
-}
-\end{verbatim}
-
-Ejemplo de condicional y ``else'':
-\begin{verbatim}
-int a = 12;
-int b = 13;
-if (a<=30 && b>30){
-cout << "Both conditions satisfied" << endl;
-}
-else {
-cout << "No condition satisfied" << endl;
-
-}
-\end{verbatim}
-
-Ejemplo de condicionales anidados:
-\begin{verbatim}
-float a = 12.53;
-if (a<=2){
-cout << "First condition satisfied" << endl;
-}
-else if (a<=6 && a>2){
-cout << "Second condition satisfied" << endl;
-}
-else if (a<=13 && a>6){
-cout << "Third condition satisfied" << endl;
-}
-\end{verbatim}
-
-Ejemplo de ``while'':
-\begin{verbatim}
-double b = 1.001;
-while (b<10000)
-{
-b*=1.001;
-cout << b << endl; 
-}
-\end{verbatim}
-
-{\textbf{Ejercicio 1:}} Implemente el mismo ejemplo de while de C++ en python y compare el tiempo que toma hacer el cálculo en ambos lenguajes. Suba los resultados a github en forma de pull request en la carpeta ``Ejercicio1\_Leccion2''.  Recuerde poner su nombre en el nombre de los archivos.
-
-%Results on C++
-%real    0m0.202s
-%user    0m0.051s
-%sys     0m0.064s
-
-%Results on python
-%real    0m0.211s
-%user    0m0.057s
-%sys     0m0.084s
-
-Ejemplo de ``for'':
-\begin{verbatim}
-  double b = 1.001;
-  double c = 1.001;
-  for (int i=0; i<20; i++)
-    {
-      b*=(c+i);
-      cout << b << endl;
-    }
-\end{verbatim}
-
-{\textbf{Ejercicio 2:}} Haga un script de C++ que calcule los números de fibonacci y que imprima en pantalla únicamente los números pares de la serie. Guarde los resultados en un archivo de texto. Suba el script y los resultados a github en forma de pull request en la carpeta ``Ejercicio2\_Leccion2''. Recuerde poner su nombre en el nombre de los archivos.
-
+El plazo para entregar la Tarea 1 es hasta el viernes 24 de agosto hasta las 23:59.
 
 %\begin{center}
 %\includegraphics[width=0.4\linewidth]{DM_detection.jpg}
