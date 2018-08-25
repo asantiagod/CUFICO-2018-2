@@ -1,0 +1,9 @@
+C make es una herramienta que permite configurar el proceso de compilación de un proyecto. 
+Este programa crea los archivos necesarios para la herramienta de compilación, sea esta gcc, 
+visual studio u otra. Los archivos serán generados con base a la configuración de cmake. Luego 
+de que Cmake realiza la configuración, el comando "Cmake -build" llama al 
+compilador (en mi caso fue g++).
+
+El comando "source" evita que el scrip "thisroot.sh" sea llamado desde un nuevo sub-proceso,
+por lo tanto, los cambios realizados por dicho scrip no desaparecen cuando este termine y pueden
+ser utilizados por la aplicación root.
