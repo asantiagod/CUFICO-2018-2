@@ -1,0 +1,190 @@
+\documentclass[10.5pt]{article}
+
+% Spanish characters
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% French display
+\usepackage[english,spanish]{babel}
+
+\usepackage{lastpage}
+%Esto me permite usar el comando "\pageref{LastPage}" en el footer.
+\renewcommand{\baselinestretch}{1.6}
+% Esto controla el interlineado o espaciado!!!
+\usepackage{color}
+%\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\red}[1]{{\color{black} #1}}
+
+%Esto me permite poner hipervínculos:
+%\usepackage[pdftex,
+%       colorlinks=true,
+%       urlcolor=blue,       % \href{...}{...} external (URL)
+%       filecolor=green,     % \href{...} local file
+%       linkcolor=black,       % \ref{...} and \pageref{...}
+%       pdftitle={Papers by AUTHOR},
+%       pdfauthor={Your Name},
+%       pdfsubject={Just a test},
+%       pdfkeywords={test testing testable},
+%%       pagebackref,%Esto parece que pone un numerito al lado de la referencia (en la seccion de bibliografia), donde se puede clicar y te lleva al lugar del texto donde se le cita.
+%       pdfpagemode=None,
+%       bookmarksopen=true]{hyperref}
+
+
+%The following packages are relics, but I don't want to remove them just in case:
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\usepackage{multicol}
+\usepackage{color}
+%\usepackage{minipage}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+%The defaults margins are huge, so I'll customize it:
+\oddsidemargin  -0.0 in
+\textwidth 6.5 in
+\textheight 8.7 in
+\addtolength{\voffset}{-1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{Lecci\'{o}n 4}
+%\fancyhead[L]{CNRS Competition 01-04}
+\fancyhead[R]{Jos\'{e} David Ruiz \'{A}lvarez}
+\fancyhead[C]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+
+\newlength\FHoffset
+\setlength\FHoffset{0cm}
+
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+
+\newlength\FHleft
+\newlength\FHright
+
+\setlength\FHleft{1cm}
+\setlength\FHright{1cm}
+
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+%\begin{center}
+\noindent
+\begin{minipage}[b]{0.75\linewidth}
+{\LARGE\bf Lecci\'{o}n 4}\\ %[1mm]
+%\end{center}
+%{\Large\bf \emph{}}\\ %[3mm]
+%{\Large\bf \emph{connections between LHC and neutrino experiments}}\\ %[3mm]
+%{\Large\bf \emph{from neutrons to Higgses}}\\ %[3mm]
+\large{Jos\'{e} David Ruiz \'{A}lvarez} \\
+\small{\href{mailto:josed.ruiz@udea.edu.co}{josed.ruiz@udea.edu.co}} \\ %[3mm]
+%\normalsize{Plaza código: 2017010307, Área: Física de fenomenología de altas energías} \\%[3mm]
+\normalsize{Instituto de Física, Facultad de Ciencias Exactas y Naturales} \\%[3mm]
+\normalsize{\bf Universidad de Antioquia} \\[8mm]
+\today %\\[4mm]
+\end{minipage}%
+%\end{center}
+%\begin{minipage}[b]{0.25\linewidth}
+%\centering{\includegraphics[width=4cm]{figures/CMS.png}}\\
+%%%%%\includegraphics[width=15cm]{figures/UniandesColombia.jpg}\\
+%\end{minipage}
+
+%\begin{center}
+%{\bf Palabras clave:} CERN, LHC, CMS, Materia Oscura
+%\end{center}
+
+%\doublespacing
+
+\section{Clases de Python: Programación Orientada a Objetos}
+
+Las clases son objetos de alto nivel de Python que permiten una mayor flexibilidad en términos de los elementos del objeto y que se adaptan especialmente a algunos problemas de computación. En general permiten un código más portable, menos susceptibles a errores del usuario y más compacto en términos de líneas de código y conceptualmente.
+
+Declaración de una clase y sus elementos:
+\begin{verbatim}
+class NombreDeLaClase:
+    #Atributos
+    atributo1=0.1
+    atributo2=1.34
+
+    #Instancias
+    def __init__(self, variable1, variable2, variable3):
+        self.Instancia1=variable1*variable2
+        self.Instancia2=variable1/variable2
+
+    #Metodos
+    def UnaFuncion(self, VariableX,VariableY):
+        self.Instancia1=self.Instancia2*VariableX/VariableY
+        return VariableX-VariableY
+\end{verbatim}
+
+Una clase puede tener atributos, simples variables asociadas a la clase, instancias, elementos de la clase de tipo variable que son inicializados cuando se instancia una clase, y también puede tener métodos, que son elementos de la case de tipo función y que ejecutan acciones bien sea sobre los mismos miembros de la case u otros. Así pues los elementos/miembros de una clase pueden ser: atributos, instancias o métodos.
+
+Instanciar una clase es crear un objeto del tipo la clase en cuestión. La acción de instanciar una clase asigna a una variable la estructura de ella con todos sus elementos que pueden ser accedidos a través del operado ``.''
+\begin{verbatim}
+A=NombreDeLaClase(valor1,valor2,valor3) #El valor1 es asignado a la variable1, valor2 a la variable2, etc.
+
+print A.atributo1
+print A.Instancia1
+print A.UnaFuncion(ValorX,ValorY) #El ValorX es asignado a la VariableX, ValorY a la VariableY
+\end{verbatim}
+ 
+{\bf Ejemplo 1:} Definir una clase para describir una partícula
+\begin{verbatim}
+class Particle:
+    #Atributos
+    cargada =  True
+    
+    #Instancias (metodos)
+    def __init__(self, x, y, z, vx, vy, vz, m, carga): #Funcion que se aplica sobre la classe misma (self)
+        self.X = x
+        self.Y = y
+        self.Z = z
+        self.VX = vx
+        self.VY = vy
+        self.VZ = vz
+        self.M = m
+        self.Carga = carga
+\end{verbatim}
+
+{\bf Ejercicio 2:} Defina métodos para describir la cinemática de la clase partícula y que responda a la cinemática de una partícula puntual sujeta a una fuerza.
+
+{\bf Ejercicio 3:} En otro código utilice la clase partícula escrita anteriormente como librería y describa el movimiento de una partícula cargada en un campo magnético. Realice un gráfico en uno de los planos del sistema coordenado de la posición de la partícula.
+
+{\bf Tarea lección 4 (Fecha de entrega el jueves 30 de agosto a más tardar a las 23:59 hora colombiana):}  Cree un sistema de dos partículas de carga opuesta y con la misma masa inmersas en un campo magnético constante en la dirección z. Asuma que las partículas tienen velocidad inicial 0. Adicionalmente asuma que la posición inicial de la partícula 1 es $(0,0,0)$ y la partícula 2 en $(1,0,0)$. Dicho sistema está regido por la fuerza de Lorentz. Los entregables son el código desarrollado y un gráfico de la posición de ambas partículas después de 10000 iteraciones con un paso de 0.01 , masa de las partículas de 10.0, y campo magnético de 10.0. Debe subirse a la carpeta ``TareaLeccion4'' del repositorio central.
+
+
+%\begin{center}
+%\includegraphics[width=0.4\linewidth]{DM_detection.jpg}
+%\captionof{figure}{Diagrama ilustrativo donde se muestran los 3 procesos principales que se utilizan para la detección de materia oscura. En el sentido de la línea verde se muestra el proceso de producción de materia oscura en colisionadores, la línea roja corresponde a la detección directa y la línea azul a la detección indirecta.}
+%\label{fig:DMdetection}
+%\end{center}
+
+
+
+%\singlespacing
+%\begin{thebibliography}{99}
+%
+%\end{thebibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%%   mode: latex
+%%%   mode: flyspell
+%%%   ispell-local-dictionary: "spanish"
+%%% End:

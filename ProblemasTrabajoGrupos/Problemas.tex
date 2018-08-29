@@ -1,0 +1,162 @@
+\documentclass[10.5pt]{article}
+
+% Spanish characters
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% French display
+\usepackage[english,spanish]{babel}
+
+\usepackage{lastpage}
+%Esto me permite usar el comando "\pageref{LastPage}" en el footer.
+\renewcommand{\baselinestretch}{1.6}
+% Esto controla el interlineado o espaciado!!!
+\usepackage{color}
+%\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\red}[1]{{\color{black} #1}}
+
+%Esto me permite poner hipervínculos:
+%\usepackage[pdftex,
+%       colorlinks=true,
+%       urlcolor=blue,       % \href{...}{...} external (URL)
+%       filecolor=green,     % \href{...} local file
+%       linkcolor=black,       % \ref{...} and \pageref{...}
+%       pdftitle={Papers by AUTHOR},
+%       pdfauthor={Your Name},
+%       pdfsubject={Just a test},
+%       pdfkeywords={test testing testable},
+%%       pagebackref,%Esto parece que pone un numerito al lado de la referencia (en la seccion de bibliografia), donde se puede clicar y te lleva al lugar del texto donde se le cita.
+%       pdfpagemode=None,
+%       bookmarksopen=true]{hyperref}
+
+
+%The following packages are relics, but I don't want to remove them just in case:
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\usepackage{multicol}
+\usepackage{color}
+%\usepackage{minipage}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+%The defaults margins are huge, so I'll customize it:
+\oddsidemargin  -0.0 in
+\textwidth 6.5 in
+\textheight 8.7 in
+\addtolength{\voffset}{-1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{Problemas proyecto final}
+%\fancyhead[L]{CNRS Competition 01-04}
+\fancyhead[R]{Jos\'{e} David Ruiz \'{A}lvarez}
+\fancyhead[C]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+
+\newlength\FHoffset
+\setlength\FHoffset{0cm}
+
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+
+\newlength\FHleft
+\newlength\FHright
+
+\setlength\FHleft{1cm}
+\setlength\FHright{1cm}
+
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+%\begin{center}
+\noindent
+\begin{minipage}[b]{0.75\linewidth}
+{\LARGE\bf Problemas proyecto final}\\ %[1mm]
+%\end{center}
+%{\Large\bf \emph{}}\\ %[3mm]
+%{\Large\bf \emph{connections between LHC and neutrino experiments}}\\ %[3mm]
+%{\Large\bf \emph{from neutrons to Higgses}}\\ %[3mm]
+\large{Jos\'{e} David Ruiz \'{A}lvarez} \\
+\small{\href{mailto:josed.ruiz@udea.edu.co}{josed.ruiz@udea.edu.co}} \\ %[3mm]
+%\normalsize{Plaza código: 2017010307, Área: Física de fenomenología de altas energías} \\%[3mm]
+\normalsize{Instituto de Física, Facultad de Ciencias Exactas y Naturales} \\%[3mm]
+\normalsize{\bf Universidad de Antioquia} \\[8mm]
+\today %\\[4mm]
+\end{minipage}%
+%\end{center}
+%\begin{minipage}[b]{0.25\linewidth}
+%\centering{\includegraphics[width=4cm]{figures/CMS.png}}\\
+%%%%%\includegraphics[width=15cm]{figures/UniandesColombia.jpg}\\
+%\end{minipage}
+
+%\begin{center}
+%{\bf Palabras clave:} CERN, LHC, CMS, Materia Oscura
+%\end{center}
+
+%\doublespacing
+
+\section{Metodología}
+
+Los proyectos finales del curso son problemas para ser desarrollados por grupos de máximo 4 estudiantes y para ser desarrollados durante el semestre. Los grupos de trabajo deben ser establecidos a más tardar el miércoles 29 de agosto, día en el cual un correo de notificación de la formación de los grupos debe ser enviado al profesor del curso. Los resultados deben ser entregados la semana de exámenes finales entre el 12 y el 14 de noviembre, con límite {\bf estricto} el 14 de noviembre a las 17:00 hora colombiana. Los grupos deben entregar:
+
+\begin{itemize}
+\item Una lista de los integrantes del grupo con las tareas realizadas por cada uno.
+\item El código desarrollado para solucionar el problema
+\item Un texto breve de máximo 4 páginas (escrito en \LaTeX) explicando la solución del problema, los métodos utilizados, los resultados en forma de gráficos.
+\end{itemize}
+
+{\bf La entrega de proyecto finales podrá ir acompañado de una sustentación oral de 15 minutos -a definir en los próximos meses-.}
+
+\section{Problemas}
+
+{\bf Análisis de datos:}
+\begin{enumerate}
+\item Reconstruya el espectro de masa invariante de dos muones de carga opuesta en las colisiones protón-protón del LHC utilizando los datos recolectados por el experimento CMS. Ejemplo: \url{http://opendata.cern.ch/record/5001}. Objetivo: Utilizar los datos del CMS para escoger sólo aquellos eventos que tienen dos muones de carga opuesta y que pasan los criterios de selección de calidad de muones y reconstruir el espectro de masa invariante del par de muones por evento. Adicionalmente debe hacerse un gráfico de dicho espectro utilizando las herramientas de ROOT. Sobre el espectro debe hacerse un fit que reconstruya los diferentes picos encontrados para determinar la masa de las resonancias visibles en el espectro y el ancho de las mismas.
+\item Reconstruya el espectro de masa invariante de dos electrones de carga opuesta en las colisiones protón-protón del LHC utilizando los datos recolectados por el experimento CMS. Ejemplo: \url{http://opendata.cern.ch/record/5001}. Objetivo: Utilizar los datos del CMS para escoger sólo aquellos eventos que tienen dos electrones de carga opuesta y que pasan los criterios de selección de calidad de electrones y reconstruir el espectro de masa invariante del par de electrones por evento. Adicionalmente debe hacerse un gráfico de dicho espectro utilizando las herramientas de ROOT. Sobre el espectro debe hacerse un fit que reconstruya los diferentes picos encontrados para determinar la masa de las resonancias visibles en el espectro y el ancho de las mismas.
+\item Reconstruya el pico del Z a partir de la masa invariante de dos taus de carga opuesta en las colisiones protón-protón del LHC utilizando los datos recolectados por el experimento CMS. Ejemplo: \url{http://opendata.cern.ch/record/5001}. Objetivo: Utilizar los datos del CMS para escoger sólo aquellos eventos que tienen dos taus de carga opuesta y que pasan los criterios de selección de calidad de taus y reconstruir el espectro de masa invariante del par de taus por evento cerca del masa del Z. Adicionalmente debe hacerse un gráfico de dicho espectro utilizando las herramientas de ROOT. Sobre el espectro debe hacerse un fit que reconstruya el pico del Z para determinar su masa y su ancho.
+\end{enumerate}
+
+
+{\bf Ecuaciones diferenciales: referencia {\textit{Computational methods for physicists, Simon Sirca and Martin Horvat}}}
+\begin{enumerate}
+\item Influencia de los combustibles fósiles en el contenido atmosférico del $CO_{2}$: Refiérase al problema 7.14.3 de la referencia bibliográfica proveída. Objetivo: Solucione el problema propuesto por la referencia y haga un gráfico de las concentraciones de $CO_{2}$ en la atmósfera, aguas poco profundas y aguas profundas oceánicas como función del tiempo. Adicionalmente, utilice la siguiente función de fuente, $f(t)=k+A(t)e^{t}$ con $k=2.5$ y $A(t)=0$ si $t<1900$ y $A(t)=1$ si $t>=1900$ para solucionar el sistema de ecuaciones. Finalmente utilice $f(t)=k+A(t)e^{Sign(t)\times t}$ con $k=2.5$, $A(t)=0$ si $t<1900$ y $A(t)=1$ si $t\ge1900$, $Sign(t)=1$ si $t<2500$ y $Sign(t)=-1$ si $t\ge2500$
+\item Sistema de Lorenz: Refiérase al 7.14.7 de la referencia bibliográfica proveída. Objetivo: Resolver los problemas propuestos en el libro. Adicionalmente encuentre al menos un conjunto de valores de $\sigma$, $b$ y $r$ que den como resultado un solo atractor. 
+\item Dispersión (scattering) caótico: Refiérase al 7.14.10 de la referencia bibliográfica proveída. Objetivo: Resolver los problemas propuestos en el libro. Construya un potencial compuesto por una red de obstáculos puntuales, con una separación constantes e impenetrables. Dibuje las trayectorias para dicho potencial. Estudie la importancia del parámetro de impacto $b$ para dicho potencial.
+\end{enumerate}
+
+
+%\begin{center}
+%\includegraphics[width=0.4\linewidth]{DM_detection.jpg}
+%\captionof{figure}{Diagrama ilustrativo donde se muestran los 3 procesos principales que se utilizan para la detección de materia oscura. En el sentido de la línea verde se muestra el proceso de producción de materia oscura en colisionadores, la línea roja corresponde a la detección directa y la línea azul a la detección indirecta.}
+%\label{fig:DMdetection}
+%\end{center}
+
+
+
+%\singlespacing
+%\begin{thebibliography}{99}
+%
+%\end{thebibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%%   mode: latex
+%%%   mode: flyspell
+%%%   ispell-local-dictionary: "spanish"
+%%% End:
