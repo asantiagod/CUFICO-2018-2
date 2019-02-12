@@ -1,0 +1,238 @@
+\documentclass[10.5pt]{article}
+
+% Spanish characters
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% French display
+\usepackage[english,spanish]{babel}
+
+\usepackage{lastpage}
+%Esto me permite usar el comando "\pageref{LastPage}" en el footer.
+\renewcommand{\baselinestretch}{1.6}
+% Esto controla el interlineado o espaciado!!!
+\usepackage{color}
+%\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\red}[1]{{\color{black} #1}}
+
+%Esto me permite poner hipervínculos:
+%\usepackage[pdftex,
+%       colorlinks=true,
+%       urlcolor=blue,       % \href{...}{...} external (URL)
+%       filecolor=green,     % \href{...} local file
+%       linkcolor=black,       % \ref{...} and \pageref{...}
+%       pdftitle={Papers by AUTHOR},
+%       pdfauthor={Your Name},
+%       pdfsubject={Just a test},
+%       pdfkeywords={test testing testable},
+%%       pagebackref,%Esto parece que pone un numerito al lado de la referencia (en la seccion de bibliografia), donde se puede clicar y te lleva al lugar del texto donde se le cita.
+%       pdfpagemode=None,
+%       bookmarksopen=true]{hyperref}
+
+
+%The following packages are relics, but I don't want to remove them just in case:
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\usepackage{multicol}
+\usepackage{color}
+%\usepackage{minipage}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+%The defaults margins are huge, so I'll customize it:
+\oddsidemargin  -0.0 in
+\textwidth 6.5 in
+\textheight 8.7 in
+\addtolength{\voffset}{-1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{Lecci\'{o}n 5}
+%\fancyhead[L]{CNRS Competition 01-04}
+\fancyhead[R]{Jos\'{e} David Ruiz \'{A}lvarez}
+\fancyhead[C]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+
+\newlength\FHoffset
+\setlength\FHoffset{0cm}
+
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+
+\newlength\FHleft
+\newlength\FHright
+
+\setlength\FHleft{1cm}
+\setlength\FHright{1cm}
+
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+%\begin{center}
+\noindent
+\begin{minipage}[b]{0.75\linewidth}
+{\LARGE\bf Lecci\'{o}n 5}\\ %[1mm]
+%\end{center}
+%{\Large\bf \emph{}}\\ %[3mm]
+%{\Large\bf \emph{connections between LHC and neutrino experiments}}\\ %[3mm]
+%{\Large\bf \emph{from neutrons to Higgses}}\\ %[3mm]
+\large{Jos\'{e} David Ruiz \'{A}lvarez} \\
+\small{\href{mailto:josed.ruiz@udea.edu.co}{josed.ruiz@udea.edu.co}} \\ %[3mm]
+%\normalsize{Plaza código: 2017010307, Área: Física de fenomenología de altas energías} \\%[3mm]
+\normalsize{Instituto de Física, Facultad de Ciencias Exactas y Naturales} \\%[3mm]
+\normalsize{\bf Universidad de Antioquia} \\[8mm]
+\today %\\[4mm]
+\end{minipage}%
+%\end{center}
+%\begin{minipage}[b]{0.25\linewidth}
+%\centering{\includegraphics[width=4cm]{figures/CMS.png}}\\
+%%%%%\includegraphics[width=15cm]{figures/UniandesColombia.jpg}\\
+%\end{minipage}
+
+%\begin{center}
+%{\bf Palabras clave:} CERN, LHC, CMS, Materia Oscura
+%\end{center}
+
+%\doublespacing
+
+\section{Funciones en C++}
+
+Toda función en C++ está definida por: Un tipo (``como'' los tipos de variables), un nombre, parámetros y el cuerpo. El tipo puede ser ``double'', ``float'', etc. Pero además hay algunos tipos especiales para funciones:
+
+\begin{itemize}
+\item void: Una función que no retorna ningún valor
+\item inline: Una función, muy corta, que no es estrictamente llamada pero que su código es insertado donde se llama.
+\end{itemize}
+
+{\bf Ejemplo 1:}
+\begin{verbatim}
+int SumaSimple(int a, int b) //int es el tipo de la funcion, SumaSimple su nombre, y a y b sus parámetros
+{
+//aqui empieza el cuerpo de la funcion
+int c = a+b;
+return c;
+//aqui termina el cuerpo de la funcion
+}
+\end{verbatim}
+
+{\bf Ejemplo 2:}
+\begin{verbatim}
+void PrintSumaSimple(int a, int b) 
+{
+int c = a+b;
+cout << c << endl;
+}
+\end{verbatim}
+
+{\bf Ejemplo 3:}
+\begin{verbatim}
+inline SumaSimpleI(int a, int b) 
+{
+return a+b;
+}
+\end{verbatim}
+
+Los parámetros de una función en C++ pueden ser pasados a una función por su valor o por su referencia, en el primer caso la función se evalúa sobre los valores que le son entregados, en el segundo caso la función se evalúa sobre los valores que tienen las referencias que le son entregadas, además si la variable que es entregada por referencia cambia de algún modo dentro de la función el cambioes visible también afuera de la función.
+
+{\bf Ejemplo 4:}
+\begin{verbatim}
+void SumaAlPrimero(float &a, float b) 
+{
+  a = a+b;
+}
+\end{verbatim}
+
+{\bf Ejercicio 1:} Consultar la definición de protofunciones y la utilización de funciones por recursividad.
+
+\section{Clases}
+\subsection{Estructuras de datos}
+
+Las estructuras de datos permiten conjugar o combinar en un solo objeto diferentes tipos de variables. Las estructuras de datos podemos pensarlas como el tipo más simple de clases en C++.
+
+{\bf Ejemplo 5:}
+\begin{verbatim}
+struct PosicionYCarga
+{
+int Carga;
+float X;
+float Y;
+float Z;
+} Particula1, Particula2;
+\end{verbatim}
+
+\subsection{Clases}
+
+La diferencia fundamental entre una estructura de datos y una clase es que esta última puede contener funciones. Además, dentro de una clase se pueden especificar los permisos de acceso a las componentes de la clase. El acceso a diferentes elementos de la clase puede ser público, privado o protegido. Cuando es público el acceso puede hacerse desde cualquier lugar donde el objeto de la clase sea visible. El acceso privado restringe el acceso a otros miembros dentro de la misma clase. Y el acceso protegido se restringe a miembros de la misma clase y clases derivadas.
+
+{\bf Ejemplo 6:}
+\begin{verbatim}
+class Particle
+{
+public:
+  int Carga;
+  float X,Y,Z;
+  float VX, VY, VZ;
+  float M;
+  void SetValues(float,float,float,float,float,float,float,int);
+  float Pos_evol(float,float,float,float);
+  //void time_slice_print();
+} P1, P2;
+
+void Particle::SetValues(float x,float y,float z,float vx,float vy,float vz,float m,int Car)
+{
+  X=x;
+  Y=y;
+  Z=z;
+  VX=vx;
+  VY=vy;
+  VZ=vz;
+  M=m;
+  Carga=Car;
+}
+
+float Particle::Pos_evol(float ax, float ay, float az, float t)
+{
+X=X+(VX*t)+(0.5*ax*(t*t));
+Y=Y+(VY*t)+(0.5*ay*(t*t));
+Z=Z+(VZ*t)+(0.5*az*(t*t));
+}
+\end{verbatim}
+
+{\bf Ejercicio 2:} Repita el ejercicio de clases con Python en C++.
+
+
+%\begin{center}
+%\includegraphics[width=0.4\linewidth]{DM_detection.jpg}
+%\captionof{figure}{Diagrama ilustrativo donde se muestran los 3 procesos principales que se utilizan para la detección de materia oscura. En el sentido de la línea verde se muestra el proceso de producción de materia oscura en colisionadores, la línea roja corresponde a la detección directa y la línea azul a la detección indirecta.}
+%\label{fig:DMdetection}
+%\end{center}
+
+
+
+%\singlespacing
+%\begin{thebibliography}{99}
+%
+%\end{thebibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%%   mode: latex
+%%%   mode: flyspell
+%%%   ispell-local-dictionary: "spanish"
+%%% End:

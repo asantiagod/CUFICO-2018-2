@@ -1,0 +1,168 @@
+\documentclass[10.5pt]{article}
+
+% Spanish characters
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% French display
+\usepackage[english,spanish]{babel}
+
+\usepackage{lastpage}
+%Esto me permite usar el comando "\pageref{LastPage}" en el footer.
+\renewcommand{\baselinestretch}{1.6}
+% Esto controla el interlineado o espaciado!!!
+\usepackage{color}
+%\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\red}[1]{{\color{black} #1}}
+
+%Esto me permite poner hipervínculos:
+%\usepackage[pdftex,
+%       colorlinks=true,
+%       urlcolor=blue,       % \href{...}{...} external (URL)
+%       filecolor=green,     % \href{...} local file
+%       linkcolor=black,       % \ref{...} and \pageref{...}
+%       pdftitle={Papers by AUTHOR},
+%       pdfauthor={Your Name},
+%       pdfsubject={Just a test},
+%       pdfkeywords={test testing testable},
+%%       pagebackref,%Esto parece que pone un numerito al lado de la referencia (en la seccion de bibliografia), donde se puede clicar y te lleva al lugar del texto donde se le cita.
+%       pdfpagemode=None,
+%       bookmarksopen=true]{hyperref}
+
+
+%The following packages are relics, but I don't want to remove them just in case:
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\usepackage{multicol}
+\usepackage{color}
+%\usepackage{minipage}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+%The defaults margins are huge, so I'll customize it:
+\oddsidemargin  -0.0 in
+\textwidth 6.5 in
+\textheight 8.7 in
+\addtolength{\voffset}{-1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{Lecci\'{o}n 7}
+%\fancyhead[L]{CNRS Competition 01-04}
+\fancyhead[R]{Jos\'{e} David Ruiz \'{A}lvarez}
+\fancyhead[C]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+
+\newlength\FHoffset
+\setlength\FHoffset{0cm}
+
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+
+\newlength\FHleft
+\newlength\FHright
+
+\setlength\FHleft{1cm}
+\setlength\FHright{1cm}
+
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+%\begin{center}
+\noindent
+\begin{minipage}[b]{0.75\linewidth}
+{\LARGE\bf Lecci\'{o}n 7}\\ %[1mm]
+%\end{center}
+%{\Large\bf \emph{}}\\ %[3mm]
+%{\Large\bf \emph{connections between LHC and neutrino experiments}}\\ %[3mm]
+%{\Large\bf \emph{from neutrons to Higgses}}\\ %[3mm]
+\large{Jos\'{e} David Ruiz \'{A}lvarez} \\
+\small{\href{mailto:josed.ruiz@udea.edu.co}{josed.ruiz@udea.edu.co}} \\ %[3mm]
+%\normalsize{Plaza código: 2017010307, Área: Física de fenomenología de altas energías} \\%[3mm]
+\normalsize{Instituto de Física, Facultad de Ciencias Exactas y Naturales} \\%[3mm]
+\normalsize{\bf Universidad de Antioquia} \\[8mm]
+\today %\\[4mm]
+\end{minipage}%
+%\end{center}
+%\begin{minipage}[b]{0.25\linewidth}
+%\centering{\includegraphics[width=4cm]{figures/CMS.png}}\\
+%%%%%\includegraphics[width=15cm]{figures/UniandesColombia.jpg}\\
+%\end{minipage}
+
+%\begin{center}
+%{\bf Palabras clave:} CERN, LHC, CMS, Materia Oscura
+%\end{center}
+
+%\doublespacing
+
+%\begin{center}
+%\includegraphics[width=0.4\linewidth]{DM_detection.jpg}
+%\captionof{figure}{Diagrama ilustrativo donde se muestran los 3 procesos principales que se utilizan para la detección de materia oscura. En el sentido de la línea verde se muestra el proceso de producción de materia oscura en colisionadores, la línea roja corresponde a la detección directa y la línea azul a la detección indirecta.}
+%\label{fig:DMdetection}
+%\end{center}
+
+\section{Método de Runge-Kutta}
+
+Se define el método de Runge-Kutta de orden 4, o método clásico de Runge-Kutta, por el siguiente sistema de ecuaciones:
+
+\begin{align}
+  x_{n+1} & =  x_{n}+h \\
+  k_{1} & =  hf(x_{n},y_{n}) \\
+  k_{2} & =  hf(x_{n}+\frac{h}{2},y_{n}+h\frac{k_{1}}{2}) \\
+  k_{3} & =  hf(x_{n}+\frac{h}{2},y_{n}+h\frac{k_{2}}{2}) \\
+  k_{4} & =  hf(x_{n}+h,y_{n}+hk_{3}) \\
+  y_{n+1} & =  y_{n} + \frac{1}{6}(k_{1}+2k_{2}+2k_{3}+k_{4})
+\end{align}siguiendo la definicion de un problema de ecuación diferencial ordinaria $y'=f(x,y);\; y(x_{0})=y_{0}$.
+
+{\bf Ejercicio 1:} Implemente el método de Runge-Kutta de orden 4 en python y utilícelo para encontrar soluciones a la ecuación diferencial, $y'=x-y$ con valor inicial $x_{0}=0;\; y_{0}=1$.
+
+{\bf Ejercicio 2:} Compare las soluciones encontradas con el método de Runge-Kutta con el método de Euler y método de Euler mejorado.
+
+\section{Método de Runge-Kutta generalizado}
+
+El método de Runge-Kutta de orden 4 hace parte de la familia de métodos de Runge-Kutta, cuya generalización se puede escribir a través de las siguientes ecuaciones:
+
+\begin{align}
+  x_{n+1} & =  x_{n}+h \\
+  k_{1} & =  f(x_{n},y_{n}) \\
+  k_{2} & =  f(x_{n}+hc_{2},y_{n}+h(a_{21}k_{1})) \\
+  k_{3} & =  f(x_{n}+hc_{3},y_{n}+h(a_{31}k_{1}+a_{32}k_{2})) \\
+  & ... \\
+  k_{s} & =  f(x_{n}+hc_{s},y_{n}+h(a_{s1}k_{1}+a_{s2}k_{2}+...+a_{s,s-1}k_{s-1})) \\
+  y_{n+1} & =  y_{n} + h\sum_{i=1}^{s}b_{i}k_{i}
+\end{align}
+
+Los valores de las constantes $a_{ij},b_{i},c_{i}$ definen la estabilidad del método. El método de Euler es un método de Runge-Kutta de orden 1. El método clásico de Runge-Kutta tiene $c_{2}=c_{3}=1/2$, $c_{4}=1$, $a_{21}=a_{32}=1/2$, $a_{43}=1$, $b_{1}=b_{4}=1/6$, $b_{2}=b_{3}=1/3$ y el resto de coeficientes son cero.
+
+{\bf Ejercicio 3:} Implemente el método de Runge-Kutta de orden 3 definido por $c_{2}=1/2$, $c_{3}=1$, $a_{21}=1/2$, $a_{31}=-1$, $a_{32}=2$, $b_{1}=b_{3}=1/6$, $b_{2}=2/3$ y el resto de coeficientes son cero en python y utilícelo para encontrar soluciones a la ecuación diferencial, $y'=x-y$ con valor inicial $x_{0}=0;\; y_{0}=1$.
+
+{\bf Ejercicio 4:} Compare las soluciones encontradas con el método de Runge-Kutta de orden 3 con el método de Euler, método de Euler mejorado y el método de Runge-Kutta de orden 4.
+
+
+%\singlespacing
+%\begin{thebibliography}{99}
+%
+%\end{thebibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%%   mode: latex
+%%%   mode: flyspell
+%%%   ispell-local-dictionary: "spanish"
+%%% End:

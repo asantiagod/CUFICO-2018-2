@@ -1,0 +1,174 @@
+\documentclass[10.5pt]{article}
+
+% Spanish characters
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% French display
+\usepackage[english,spanish]{babel}
+
+\usepackage{lastpage}
+%Esto me permite usar el comando "\pageref{LastPage}" en el footer.
+\renewcommand{\baselinestretch}{1.6}
+% Esto controla el interlineado o espaciado!!!
+\usepackage{color}
+%\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\red}[1]{{\color{black} #1}}
+
+%Esto me permite poner hipervínculos:
+%\usepackage[pdftex,
+%       colorlinks=true,
+%       urlcolor=blue,       % \href{...}{...} external (URL)
+%       filecolor=green,     % \href{...} local file
+%       linkcolor=black,       % \ref{...} and \pageref{...}
+%       pdftitle={Papers by AUTHOR},
+%       pdfauthor={Your Name},
+%       pdfsubject={Just a test},
+%       pdfkeywords={test testing testable},
+%%       pagebackref,%Esto parece que pone un numerito al lado de la referencia (en la seccion de bibliografia), donde se puede clicar y te lleva al lugar del texto donde se le cita.
+%       pdfpagemode=None,
+%       bookmarksopen=true]{hyperref}
+
+
+%The following packages are relics, but I don't want to remove them just in case:
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\usepackage{multicol}
+\usepackage{color}
+%\usepackage{minipage}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+%The defaults margins are huge, so I'll customize it:
+\oddsidemargin  -0.0 in
+\textwidth 6.5 in
+\textheight 8.7 in
+\addtolength{\voffset}{-1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{Lecci\'{o}n 6}
+%\fancyhead[L]{CNRS Competition 01-04}
+\fancyhead[R]{Jos\'{e} David Ruiz \'{A}lvarez}
+\fancyhead[C]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+
+\newlength\FHoffset
+\setlength\FHoffset{0cm}
+
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+
+\newlength\FHleft
+\newlength\FHright
+
+\setlength\FHleft{1cm}
+\setlength\FHright{1cm}
+
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+%\begin{center}
+\noindent
+\begin{minipage}[b]{0.75\linewidth}
+{\LARGE\bf Lecci\'{o}n 6}\\ %[1mm]
+%\end{center}
+%{\Large\bf \emph{}}\\ %[3mm]
+%{\Large\bf \emph{connections between LHC and neutrino experiments}}\\ %[3mm]
+%{\Large\bf \emph{from neutrons to Higgses}}\\ %[3mm]
+\large{Jos\'{e} David Ruiz \'{A}lvarez} \\
+\small{\href{mailto:josed.ruiz@udea.edu.co}{josed.ruiz@udea.edu.co}} \\ %[3mm]
+%\normalsize{Plaza código: 2017010307, Área: Física de fenomenología de altas energías} \\%[3mm]
+\normalsize{Instituto de Física, Facultad de Ciencias Exactas y Naturales} \\%[3mm]
+\normalsize{\bf Universidad de Antioquia} \\[8mm]
+\today %\\[4mm]
+\end{minipage}%
+%\end{center}
+%\begin{minipage}[b]{0.25\linewidth}
+%\centering{\includegraphics[width=4cm]{figures/CMS.png}}\\
+%%%%%\includegraphics[width=15cm]{figures/UniandesColombia.jpg}\\
+%\end{minipage}
+
+%\begin{center}
+%{\bf Palabras clave:} CERN, LHC, CMS, Materia Oscura
+%\end{center}
+
+%\doublespacing
+
+\section{Solución numérica de ecuaciones diferenciales}
+
+Definimos de forma general una ecuación diferencial como
+
+\begin{equation}
+y'=f(x,y);\; y(x_{0})=y_{0}
+\end{equation}
+
+\subsection{Método de Euler}
+
+Basado en la aproximación de la derivación como la diferencia media entre dos puntos de una función. La solución de la ecuación diferencial en el punto $x_{n}$ es usada para aproximar la solución en el punto $x_{n+1}$. Definimos:
+
+\begin{equation}
+h=(b-a)/N=x_{n+1}-x_{n};\; n=0,1,...,N-1
+\end{equation} definición con la cual podemos encontrar 
+
+\begin{equation}
+y_{n+1}=y_{n}+hy_{n}'=y_{n}+hf(x_{n},y_{n})
+\end{equation}
+
+Definimos el error de truncamiento (asociado a tomar valores discretos sobre $x$) como la diferencia entre la solución numérica y la solución exacta de la ecuación diferencial en un paso, asumiendo que ambas soluciones son exactamente iguales en todos los pasos anteriores. El error del método de Euler sería entonces asociado a $y(n+1)-y_{n+1}\approx \mathcal{O}(h^{2})$
+
+El método mejorado de Euler usa la tangente a la curva en el punto medio entre dos pasos para aproximar la solución en el punto $n+1$ en lugar de la tangente en el punto $n$. Es definido por:
+
+\begin{equation}
+y_{n+1/2}=y_{n}+\frac{1}{2}hy_{n}';\; y_{n+1/2}'=f(x_{n+1/2},y_{n+1/2});\; y_{n+1}=y_{n}+hy_{n+1/2}'
+\end{equation} este método tiene un error de truncamiento de $\mathcal{O}(h^{3})$. 
+
+{\bf Ejercicio 1:} Basado en el ejemplo dado en clase implemente el método mejorado de Euler y compare el error de truncamiento con el método de Euler.
+
+\subsection{Convergencia}
+
+Decimos que un esquema de partición ($x_{0},...,x_{n}$) converge si
+
+\begin{equation}
+lim_{h\rightarrow 0}|y_{n}-y(x_{n})|=0;\; nh=x_{n}-x_{0}
+\end{equation}
+
+{\bf Ejercicio 2:} Partiendo de los ejemplos anteriores determine si los esquemas de partición son convergentes para los métodos de Euler y Euler mejorado.
+
+
+
+%\begin{center}
+%\includegraphics[width=0.4\linewidth]{DM_detection.jpg}
+%\captionof{figure}{Diagrama ilustrativo donde se muestran los 3 procesos principales que se utilizan para la detección de materia oscura. En el sentido de la línea verde se muestra el proceso de producción de materia oscura en colisionadores, la línea roja corresponde a la detección directa y la línea azul a la detección indirecta.}
+%\label{fig:DMdetection}
+%\end{center}
+
+
+
+%\singlespacing
+%\begin{thebibliography}{99}
+%
+%\end{thebibliography}
+
+\end{document}
+
+%%% Local Variables:
+%%%   mode: latex
+%%%   mode: flyspell
+%%%   ispell-local-dictionary: "spanish"
+%%% End:
