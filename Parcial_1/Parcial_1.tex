@@ -1,0 +1,149 @@
+\documentclass[10.5pt]{article}
+
+% Spanish characters
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+% French display
+\usepackage[english,spanish]{babel}
+
+\usepackage{lastpage}
+%Esto me permite usar el comando "\pageref{LastPage}" en el footer.
+\renewcommand{\baselinestretch}{1.6}
+% Esto controla el interlineado o espaciado!!!
+\usepackage{color}
+%\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\red}[1]{{\color{black} #1}}
+
+%Esto me permite poner hipervínculos:
+%\usepackage[pdftex,
+%       colorlinks=true,
+%       urlcolor=blue,       % \href{...}{...} external (URL)
+%       filecolor=green,     % \href{...} local file
+%       linkcolor=black,       % \ref{...} and \pageref{...}
+%       pdftitle={Papers by AUTHOR},
+%       pdfauthor={Your Name},
+%       pdfsubject={Just a test},
+%       pdfkeywords={test testing testable},
+%%       pagebackref,%Esto parece que pone un numerito al lado de la referencia (en la seccion de bibliografia), donde se puede clicar y te lleva al lugar del texto donde se le cita.
+%       pdfpagemode=None,
+%       bookmarksopen=true]{hyperref}
+
+
+%The following packages are relics, but I don't want to remove them just in case:
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{cite}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+\usepackage{multicol}
+\usepackage{color}
+%\usepackage{minipage}
+
+\usepackage{graphicx} % Required for including images
+\graphicspath{{figures/}} % Location of the graphics files
+\usepackage[font=small,labelfont=bf]{caption} % Required for specifying captions to tables and figures
+
+%The defaults margins are huge, so I'll customize it:
+\oddsidemargin  -0.0 in
+\textwidth 6.5 in
+\textheight 8.7 in
+\addtolength{\voffset}{-1cm}
+
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+
+\fancyhead[L]{Lecci\'{o}n 1}
+%\fancyhead[L]{CNRS Competition 01-04}
+\fancyhead[R]{Jos\'{e} David Ruiz \'{A}lvarez}
+\fancyhead[C]{}
+\fancyfoot[C]{\thepage /\pageref{LastPage}}
+
+\newlength\FHoffset
+\setlength\FHoffset{0cm}
+
+\addtolength\headwidth{2\FHoffset}
+\fancyheadoffset{\FHoffset}
+
+\newlength\FHleft
+\newlength\FHright
+
+\setlength\FHleft{1cm}
+\setlength\FHright{1cm}
+
+\thispagestyle{empty}
+%%%%%%%%%%%%%%%%%%%%%%%% HEADER AND FOOTER %%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+%\begin{center}
+\noindent
+\begin{minipage}[b]{0.75\linewidth}
+{\LARGE\bf Parcial 1}\\ %[1mm]
+%\end{center}
+%{\Large\bf \emph{}}\\ %[3mm]
+%{\Large\bf \emph{connections between LHC and neutrino experiments}}
+\large{Jos\'{e} David Ruiz \'{A}lvarez} \\
+\small{\href{mailto:josed.ruiz@udea.edu.co}{josed.ruiz@udea.edu.co}} \\ %[3mm]
+%\normalsize{Plaza código: 2017010307, Área: Física de fenomenología de altas energías} \\%[3mm]
+\normalsize{Instituto de Física, Facultad de Ciencias Exactas y Naturales} \\%[3mm]
+\normalsize{\bf Universidad de Antioquia} \\[8mm]
+\today %\\[4mm]
+\end{minipage}%
+%\end{center}
+%\begin{minipage}[b]{0.25\linewidth}
+%\centering{\includegraphics[width=4cm]{figures/CMS.png}}\\
+%%%%%\includegraphics[width=15cm]{figures/UniandesColombia.jpg}\\
+%\end{minipage}
+
+%\begin{center}
+%{\bf Palabras clave:} CERN, LHC, CMS, Materia Oscura
+%\end{center}
+
+%\doublespacing
+
+\section{Contenido}
+
+El siguiente problema es para ser desarrollado en grupo de m\'{a}ximo dos personas. Grupos formados presencialmente el 19 de ferbrero en hora de clase, de lo contrario se trabaja de forma individual. El lenguaje de programaci\'{o}n de para resolver el problema es de libre elecci\'{o}n, sin embargo la utilizaci\'{o}n de C++ y ROOT da un sobrepuntaje de 0.5 unidades.
+
+\section{Planteamiento}
+
+Considere el juego de la vida con sus reglas tradicionales. Considere un matriz cuadrada de dimensiones $n \times n$ en donde cada uno de sus elementos puede asumir dos valores 0 o 1. Dicha matriz evoluciona temporalmente a trav\'{e}s de iteraciones de acuerdo a las siguiente reglas:
+
+\begin{itemize}
+\item Si un elemento tiene como valor 0 y tiene 3 vecinos con valor 1, transforma su valor a 1.
+\item Si un elemento tiene como valor 1 y tiene 2 o 3 vecinos con valor 1, conserva su valor de 1. De lo contrario, transforma su valor a cero.
+\end{itemize}
+
+\section{Problema}
+
+Para el desarrollo del problema necesita como base un script que genere una matriz con estado inicial aleatorio y la haga evolucionar de acuerdo a las reglas del juego de la vida descritas en el planteamiento. Con ese script como base desarrolle las siguientes tareas:
+
+\begin{itemize}
+\item Modifique el script para que reciba por entrada de l\'{i}nea de comandos el valor $n$ que fija las dimensiones de la matriz. Solo considere matrices cuadradas. (Valor=0.5)
+\item Modifique el script para que se detenga cuando el n\'{u}mero de celdas con valor 1 se estabiliza (deja de cambiar). (Valor=0.5)
+\item Tome datos del tiempo que le toma al sistema estabilizarse para matrices de dimensi\'{o}n entre $n=5$ y $n=60$. Cada valor de $n$ debe tener al menos 20 datos. Debe tomar al menos 12 valores de n. (Valor=1.0)
+\item Calcule el tiempo m\'{a}ximo de estabilizaci\'{o}n del sistema para cada valor de $n$. Hint: Puede utilizar el comando $time$ de linux, tomando el tiempo de procesamiento del sistema. (Valor=0.2)
+\item Ajuste los datos correspondientes a cada n con una gaussiana y calcule el valor central de dicha distribuci\'{o}n. (Valor=0.8)
+\item Encuentre una funci\'{o}n que ajuste el valor m\'{a}ximo de estabilizaci\'{o}n del sistema como funci\'{o}n de n. (Valor=1.0)
+\item Encuentre una funci\'{o}n que ajuste el valor medio de estabilizaci\'{o}n del sistema obtenido a trav\'{e}s del fit a una gaussiana como funci\'{o}n de $n$. (Valor=1.0)
+\end{itemize}
+
+{\bf Entregables}: Script con modificaciones. Conjunto de datos (COMPLETO). Scripts/notebooks que hacen los ajustes de los tres \'{u}ltimos \'{i}tems. Gr\'{a}ficas y dem\'{a}s material que considere pertinente.
+
+{\bf M\'{e}todo de entrega}: Pull request al repositorio central del curso con una carpeta con los nombres de los integrantes de cada curso que debe estar adentro de la carpeta llamada ``Parcial\_1'' con todos los entregables.
+
+\end{document}
+
+%%% Local Variables:
+%%%   mode: latex
+%%%   mode: flyspell
+%%%   ispell-local-dictionary: "spanish"
+%%% End:
