@@ -1,0 +1,13 @@
+Tiempos de ejecución del script while.cpp y while.py
+
+Python
+
+real: 0.347s
+user: 0.040s
+sys:  0.020s
+
+C++
+
+real: 0.054
+user: 0.012
+sys:  0.024

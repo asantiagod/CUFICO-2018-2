@@ -1,0 +1,26 @@
+Natalia Alvarez Baena
+
+c.c. 1035441007
+
+
+
+1. ¿Qué es y qué función cumple CMake?
+
+CMake es un conjunto de herramientas diseñadas para
+construir, probar y empaquetar software.
+
+En este caso es empleado en los comandos puesto que 
+CMake detecta el entorno de desarrollo, realizando 
+una serie de pruebas y generando los archivos necesarios 
+para construir ROOT.
+
+
+2. ¿Qué es y qué función cumple source?
+
+El comando source permite que un proceso sea ejecutado 
+línea por línea sin generar subprocesos, permitiendo
+así, que los cambios generados en la ejcución, se
+mantengan.
+
+Así pues, es usado para general el ambiente en el
+que va a correr ROOT 

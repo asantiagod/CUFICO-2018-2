@@ -1,0 +1,8 @@
+Física Computacional I 
+Camilo José Torres Castaño
+C.c. 1036401258
+
+Tarea 1
+
+    • Cmake: detectará tu entorno de desarrollo, corre series de testeo y genera los archivos requeridos para el ROOT. Cmake usará valores predeterminados para construir todos los parámetros necesarios para correr ROOT.
+    • Sourse: Para utilizar la instalación independiente de la localización se requiere preparar las variables de entorno PATH y LD_LIBRARY_PATH. Esto se hace abasteciendo el script con la función source: source bin/thisroot.sh. Así mientras se usa la localización modificada para la instalación no es necesario preparar ningún entorno para poder correr el root.

@@ -1,0 +1,13 @@
+los tiempos fueron de
+
+real	0m0,028s
+user	0m0,018s
+sys	0m0,005s
+
+para c++ y 
+
+real	0m0,046s
+user	0m0,013s
+sys	0m0,018s
+
+para python

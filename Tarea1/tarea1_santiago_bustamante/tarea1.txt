@@ -1,0 +1,7 @@
+CMake es una herramienda de construcción, diseñada para automatizar el
+proceso de compilación de programas, control de versiones y calidad de código.
+Ya que ROOT usa CMake como principal sistema de construcción, es necesario
+en la instalación.
+
+Los ROOT sources son los archivos principales de ROOT sobre los cuales
+se construye el programa.

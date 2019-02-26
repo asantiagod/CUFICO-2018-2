@@ -1,0 +1,13 @@
+#Salidas de aplicar "time" a el programa:
+
+#En C++:
+real	0m0.036s
+user	0m0.009s
+sys	0m0.027s
+
+#En python:
+real	0m0.107s
+user	0m0.044s
+sys	0m0.028s
+
+#Se observa claramente la diferencia en el tiempo total(real) de ejecucion en cada lenguage.

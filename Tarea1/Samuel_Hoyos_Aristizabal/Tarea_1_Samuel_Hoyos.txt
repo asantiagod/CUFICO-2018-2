@@ -1,0 +1,15 @@
+Cmake y Source
+
+En general CMake es una plataforma de familias de herramientas designadas para probar, construir y empaquetar software.
+
+CMake es la plataforma encargada de generar los archivos que necesita la herramienta de construcción (en este caso make) para crear ROOT. 
+Por ejemplo, en la línea de comando: 
+
+$ cmake path/to/source (donde “path to source” representa la ubicación del archivo de root descomprimido).
+
+CMake detecta el ambiente de desarrollo, hace algunas pruebas y genera los archivos requeridos para construir el ROOT.
+
+
+Por su parte Source ejecuta órdenes de un archivo en el intérprete de ordenes actual.
+ Lee y ejecuta órdenes del archivo en el intérprete actual y , si se proporcionan argumentos, se convierten en los parámetros posicionales cuando se ejecuta el archivo.
+Finalmente, Devuelve el estado de la última orden ejecutada del archivo.

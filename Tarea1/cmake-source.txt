@@ -1,0 +1,8 @@
+Luis Papiernik
+
+Cmake: Es una familia de herramientas para desarrollar, probar y empaquetar
+software, se utiliza para controlar el proceso de compilación usando archivos
+de configuración independientes de la plataforma.
+
+Source: Se utiliza para la construccion de Root, es decir, para realizar la
+configuración adecuada que permita ejecutarlo

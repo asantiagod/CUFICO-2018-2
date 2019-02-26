@@ -1,0 +1,6 @@
+CMake es una familia de herramientas de plataforma abierta y multiplataforma diseñada para desarrollar, probar y empaquetar software.
+ CMake se utiliza para controlar el proceso de compilación del software utilizando plataformas simples y archivos de configuración independientes del compilador,
+ y genera makefiles y espacios de trabajo nativos que se pueden usar en el entorno de compilación de su elección.
+ROOT utiliza la herramienta de creación de generador multiplataforma CMake como un sistema de compilación primario. 
+CMake no construye el proyecto, genera los archivos necesarios para su construcción (GNU make, Ninja, Visual Studio, etc.) para construir ROOT.
+Por otro lado Sources son las fuentes de Root, pero  que aun estan sin compilarse aqui entra a trabajar CMake.

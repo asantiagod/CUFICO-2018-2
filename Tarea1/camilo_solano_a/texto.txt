@@ -1,0 +1,2 @@
+CMake es un conjunto de herramientas que facilita y automatiza la compilación código fuente de acuerdo a las directrices en el archivo CMakeLists.txt.
+En nuestro caso, a partir del código fuente de Root, CMake genera los archivos necesarios para la compilación y los compila, finalmente el comando source ejecuta el archivo thisroot.sh.

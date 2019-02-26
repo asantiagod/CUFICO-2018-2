@@ -1,0 +1,5 @@
+Danie Sierra Botero
+
+CMake: es un sistema extensible de código abierto que gestiona el proceso de compilación en un sistema operativo y de manera independiente al compilador, el proceso de instalacion de ROOT requiere el uso de CMake para la compilacion del pograma.
+
+Source: Para abrir el programa independiente de la localización se requiere preparar las variables de entorno. Esto se consigue con la función source. Asi no hace falta preparar ningún entorno para poder correr el ROOt.

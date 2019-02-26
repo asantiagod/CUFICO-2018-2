@@ -1,0 +1,1 @@
+cmake es una herramienta para generar un sistema, en la instalación genera los archivos de configuración del ROOT. Mientras source es una herramienta que ejecuta un archivo, en este caso el root una vez sus configuraciones han sido generadas correctamente.

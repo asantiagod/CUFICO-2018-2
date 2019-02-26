@@ -1,0 +1,4 @@
+Cmake es una plataforma usada para controlar el proceso de compilación del 
+software, a su vez, source es un comando que corre el script ejecutable en el 
+shell actual. El primero se usa en la parte de compilación de root mientras
+que el segundo se usa en la parte de la instalación.

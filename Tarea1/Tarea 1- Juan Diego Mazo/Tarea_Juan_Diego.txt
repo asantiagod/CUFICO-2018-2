@@ -1,0 +1,3 @@
+Source en este caso es el paquete que tiene los datos del programa root, los métodos utilizados, la información para el intérprete y la configuración. En resumen, se podría decir que es la fuente de donde uno instala ROOT.
+
+Cmake es un software que permite gestionar la descarga  y la compilación de otros softwares o plataformas, en este caso ROOT. 
